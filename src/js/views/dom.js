@@ -26,5 +26,7 @@ export const elements = {
     btnBigPlay:undefined , // this is set frim UpperControk using method drawBigPlayButton
     Bigbtnicon:undefined , // this is set from UpperControl using method DrawBigPlayButton
     VideoType:undefined , // this is set from LowerControl using methid DrawSettingController
-    playBackMenuList:undefined
+    playBackMenuList:undefined,
+    btnTimeDisplay:undefined,
+    
 }

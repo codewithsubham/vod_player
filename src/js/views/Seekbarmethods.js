@@ -29,19 +29,22 @@ export default class SeekBarMethods extends Extra{
 
     onSeeking(e){
 
-        var curTime = elements.seekbar.value;
+        let curTime = elements.seekbar.value;
         
         if(data.timeUpdateOnSeekUpdate == 0){
-        
+            elements.btnTimeDisplay.innerHTML = super.convertToTimecode(curTime - (elements.video.duration * data.remainingTimeDisplay)) + " / " + super.convertToTimecode(elements.video.duration);
             elements.seekbar.value = curTime;
             playbackProgress.value = curTime;
           
         }else{
-           elements.playbackProgress.value = data.timeUpdateOnSeekUpdate;
+          elements.btnTimeDisplay.innerHTML = super.convertToTimecode(data.timeUpdateOnSeekUpdate) + " / " + super.convertToTimecode(elements.video.duration);
+		
+            elements.playbackProgress.value = data.timeUpdateOnSeekUpdate;
             //data.player.seek(data.timeUpdateOnSeekUpdate);
-           elements.seekbar.value = data.timeUpdateOnSeekUpdate;
+            elements.seekbar.value = data.timeUpdateOnSeekUpdate;
 
-           
+            elements.video.currentTime = data.timeUpdateOnSeekUpdate;
+		
         }
     }
 
@@ -68,16 +71,15 @@ export default class SeekBarMethods extends Extra{
         }
         if(data.seeking){
             if(pos <= w){
-
-            tooltip.innerHTML = extra.convertToTimecode(-z);
+                tooltip.innerHTML = extra.convertToTimecode(-z);
             }
-         data.timeUpdateOnSeekUpdate = (super.VideoDuration()/w) * pos;
+            
+            data.timeUpdateOnSeekUpdate = (super.VideoDuration()/w) * pos;
             //elements.playbackProgress.value = pos;
 
         }else{
             
             tooltip.innerHTML = extra.convertToTimecode(-z);
-            
             data.timeUpdateOnSeekUpdate = (super.VideoDuration()/w) * pos;
         }
     }

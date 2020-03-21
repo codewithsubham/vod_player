@@ -1,5 +1,6 @@
 import {data} from './base';
 import {error} from './Error'
+import { elements } from '../views/dom';
 
 export default class Dash{
 
@@ -32,6 +33,7 @@ export default class Dash{
             console.log(e)
         })
         data.player.on(dashjs.MediaPlayer.events.STREAM_INITIALIZED, this.onDashStreamInitialized, this);
+        data.player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, this.onDashFragmentLoad, this);
         data.player.on(dashjs.MediaPlayer.events.PLAYBACK_ENDED, () => {
             console.log('video stoped');
         })
@@ -54,6 +56,21 @@ export default class Dash{
     onDashStreamInitialized(){
         data.availableQuality = data.player.getBitrateInfoListFor("video");
         // isLive = player.isDynamic();
+    }
+
+    onDashFragmentLoad(){
+	    this.onFragmentLoad();
+    }
+
+    onFragmentLoad(){	
+        if(video.buffered.length==0)
+            return;
+        let  progress;
+        progress = (elements.video.buffered.end(video.buffered.length-1) * 100) / elements.video.duration;
+        console.log(elements.video.buffered.end(video.buffered.length-1))
+        elements.bufferProgress.value=progress;
+
+        
     }
     
 

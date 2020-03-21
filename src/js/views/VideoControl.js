@@ -1,4 +1,5 @@
 import {elements} from './dom';
+import { data } from '../models/base';
 
 export default class DrawControls{
 
@@ -78,7 +79,9 @@ export default class DrawControls{
 
     drawToolTip(){
         // this function tooltip
-
+        if(data.mobileAndTabletcheck){
+            return
+        }
         elements.seektimePreview = document.createElement("span");
         elements.seektimePreview.id = "seektimePreview";
         elements.seektimePreview.classList.add("seektimePreview");

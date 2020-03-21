@@ -59,12 +59,12 @@ export default class DrawLowerControl extends DomChanges{
             this.DrawVolumeSlider();
         if(data.controls.timeUpdate != "false"){
                 this.addControlButton("btnTimeDisplay", "btnTimeDisplay", "", "00:00:00 00:00:00", "Elapsed/remaining time", this.onBtnTimeDisplayClick , '' , 'left');		
-                document.getElementById("btnTimeDisplay").innerHTML = '00:00' +  " / " + '00:00';
+                elements.btnTimeDisplay =  document.getElementById("btnTimeDisplay");   
+                elements.btnTimeDisplay.innerHTML = '00:00' +  " / " + '00:00';
             
             }
         if(data.controls.quality != "false")
-        this.addControlButton("VideoType", "VideoType"  , "" , "Skip ahead to live broadcast" , "",  this.gotoLive , iconsName.live , 'right' )
-    
+            this.addControlButton("VideoType", "VideoType"  , "" , "Skip ahead to live broadcast" , "",  this.gotoLive , iconsName.live , 'right' )
             this.addControlButton("btnSettingSelector", "btnSettingSelector", "", "", "Change Playback Quality", this.onSettingClick , iconsName.Setting ,'' , 'right');		
         if(data.controls.quality != "false")
             this.addControlButtonForMobile("btnQualitySelector", "btnQualitySelector", "", "", "Change Playback Quality",this.onBtnQualitySelectorClick , 'icon-film','Quality list' );		
@@ -463,7 +463,7 @@ export default class DrawLowerControl extends DomChanges{
                     data.player.loadLevel=index;
                     console.log("Quality "+data.player.levels[index].width);
                     //player.loadLevel=index;
-                }else if(urlType=="dash"){
+                }else if(conf.link.dash){
                     data.player.setAutoSwitchQualityFor('audio', false);
                     data.player.setAutoSwitchQualityFor('video', false);
                     data.player.setQualityFor('video', index);

@@ -201,19 +201,23 @@ export default class DomChanges extends Extra{
     }
     onPlaybackTimeUpdate(){
             if(data.seeking){
+                
                 return;
             
             }
+
+            
+
             data.videoSeekValue = super.VideoDuration();
-          
             let VideoCurrentTime = elements.video.currentTime;
-            document.getElementById("btnTimeDisplay").innerHTML = super.convertToTimecode(VideoCurrentTime - (super.VideoDuration() * data.remainingTimeDisplay)) + " / " + super.convertToTimecode(super.VideoDuration());
+            
+            console.log(VideoCurrentTime)
+            console.log(super.VideoDuration())
+            console.log(data.remainingTimeDisplay)
+
+            elements.btnTimeDisplay.innerHTML = super.convertToTimecode(VideoCurrentTime - (super.VideoDuration() * data.remainingTimeDisplay)) + " / " + super.convertToTimecode(super.VideoDuration());
 	
-            if(data.videoSeekValue - VideoCurrentTime < 50){
-                this.updateVideoTime(super.VideoDuration());
-            } else{
-                this.updateVideoTime(VideoCurrentTime);
-            }
+           
         
     }
 

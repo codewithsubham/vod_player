@@ -28,15 +28,16 @@ export default class UpperControl extends SeekBarMethods{
 
     DrawProgressBar(){
         // this function create elements for  bufferprogress and playbackProgess
-       /* 
+        
         let bufferprogress = document.createElement('progress');
               bufferprogress.id = 'bufferprogress';
               bufferprogress.min = 0;
               bufferprogress.max = 100;
               bufferprogress.value = 0;
               bufferprogress.classList.add("bufferProgress");
+              elements.bufferProgress = bufferprogress
               elements.controlsUpper.appendChild(bufferprogress);
-            */
+            
 
         let playbackProgress = document.createElement('progress');
              playbackProgress.id = "playbackProgress";

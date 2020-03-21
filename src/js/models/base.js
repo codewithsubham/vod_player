@@ -20,7 +20,7 @@ export const data = {
           seekInterval: 15,
           sticky: "true",
           autoHide: "true",
-          quality:true
+          quality:"true"
       },
       playSpeed:1,
       videoDuration:1,
