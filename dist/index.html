@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>live-player</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+   <link rel="stylesheet" href="css/style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/mobile.css" crossorigin='anonymous'>
+    
+
+    <script src="js/dash.all.min.js"></script>
+    <script>
+            const conf = {
+    
+                container: "playerContainer",
+                get link(){
+                    const isIOS =  navigator.platform && /iPad|iPhone/.test(navigator.platform);
+                    if(isIOS){
+                        return {
+                            hls:"http://104.199.144.5:1935/vod/smil:4380201902171700.smil/playlist.m3u8?hdnts=exp%3D1575299295%7Eacl%3D%2F%2A%7Ehmac%3Df3a870e44be7376bfae045dd1a7e01e827b31f80b0514dfab544a4776fa2bac7"
+                        }
+                    }else{
+                        return{
+                            hls:"http://104.199.144.5:1935/vod/smil:4380201902171700.smil/playlist.m3u8?hdnts=exp%3D1575299295%7Eacl%3D%2F%2A%7Ehmac%3Df3a870e44be7376bfae045dd1a7e01e827b31f80b0514dfab544a4776fa2bac7"
+                         //   dash:"http://104.199.144.5:1935/vod/smil:4380201902171700.smil/playlist.m3u8"
+                        }
+                    }
+    
+                }
+            }
+        </script>
+</head>
+<body>
+    
+   
+	<div id='playerContainers'>
+        <div id="playerContainer" style="height: 100%; width: 100%;position: absolute;">
+            
+        </div>
+	</div>
+    
+<script type="text/javascript" src="js/bundle.js"></script></body>
+</html>
